@@ -110,6 +110,7 @@ if( x >= 5) {
 
 > #### ***output on terminal***
 >
+> ```
 > if (a==5){ //block number 1
 > print();
 > a=6;
@@ -122,9 +123,15 @@ if( x >= 5) {
 > print();
 > }
 > }
+> ```
+>
+> 
 
 > #### ***output on External output***
 >
+> #### 
+>
+> ```
 > if(a==5) //block number 1
 > {
 > print();
@@ -139,3 +146,6 @@ if( x >= 5) {
 > print();
 > }
 > }
+> ```
+>
+> 
