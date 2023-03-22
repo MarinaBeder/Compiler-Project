@@ -15,4 +15,18 @@ NL
   print: (assignment NL 'print();'NL )
   |('print();' NL assignment NL )
   |('print();' NL|assignment NL);
+  print_one_line:('print();' NL|assignment NL);
+
+body_if_one: print_one_line ;
+
+assignment: VAR '='  expr ';';
+
+expr:INT
+      |VAR
+      |expr operation=('*'|'/') expr
+      |expr operation=('+'|'-') expr ;
+INT:[0-9]+;
+VAR:[a-zA-Z]+;
+NL:'\n';
+WS:[ \t\r]+ -> skip;//ignore this tab
  
