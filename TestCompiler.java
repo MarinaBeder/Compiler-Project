@@ -29,4 +29,12 @@ public class TestCompiler {
         ParseTreeWalker walker =new ParseTreeWalker();
         MyStatementsListener myStatementsListener1= new MyStatementsListener(rewriter);
         walker.walk(myStatementsListener1,tree);//walk on tree using functions exist in function"list base listner"{enter liost base listner}{and exist from that element}
-}
+        //System.out.println(myStatementsListener1);
+        File output = new File("output.txt");
+        output.createNewFile();
+        FileWriter w = new FileWriter("output.txt");
+        w.write(myStatementsListener1.rewriter.getText());
+        w.close();
+
+        System.out.println("start sceuss");
+    }}
