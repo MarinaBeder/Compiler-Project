@@ -127,7 +127,7 @@ if( x >= 5) {
 >
 > 
 
-> #### ***output on External output***
+> #### ***output on External File***
 >
 > #### 
 >
