@@ -76,4 +76,20 @@ public class MyStatementsVisitor extends JavaParserBaseVisitor{
         variableValuesMap.put(FirstExpr,SecondExpr);
         return 0;
     }
+    @Override
+    public Object visitForControl(JavaParser.ForControlContext ctx) {
+        visit(ctx.forInit());//part int i=6
+
+        //part (i<6)
+        String FirstExpr= String.valueOf(ctx.expression().expression(0).getText());//i
+        int SecondExpr= Integer.valueOf(ctx.expression().expression(1).getText());//10
+
+        int i=variableValuesMap.get(FirstExpr);//m[i]=6
+        for(;i<SecondExpr;i++){
+            // this.rewriter.insertBefore(ctx.getStart(), " //block number " + count + "Visited\n");
+            arrayList.add("block number " + count + " Visited\n");
+
+        }
+        count++;
+        return 0;}
 }
