@@ -31,5 +31,42 @@ public class MyStatementsVisitor extends JavaParserBaseVisitor{
         variableValuesMap.put(variable, intVal);//map[a]=5
         return 0;
     }
+@Override
+    public Object visitParExpression(JavaParser.ParExpressionContext ctx) {
+        int x=1;
 
+        String oper=String.valueOf(ctx.expression().EQUAL());//==
+        String OR=String.valueOf(ctx.expression().OR());//
+
+        if(OR.contains("")) {
+               //part1
+            String FirstExpr= String.valueOf(ctx.expression().expression(0).expression(0).getText());
+            int SecondExpr= Integer.valueOf(ctx.expression().expression(0).expression(1).getText());
+            int firstExper=variableValuesMap.get(FirstExpr);
+
+            //part2
+            String exp1= String.valueOf(ctx.expression().expression(1).expression(0).getText());
+            int exp2= Integer.parseInt(ctx.expression().expression(1).expression(1).getText());
+            int firstexp1=variableValuesMap.get(exp1);
+
+
+            if ((firstExper==SecondExpr)||(firstexp1 == exp2)) {
+                // this.rewriter.insertBefore(ctx.getStart(), " //block number " + count++ + " Visited\n");
+                arrayList.add("block number " + count++ + " Visited\n");
+            }
+
+        }
+        else if(oper.equals("==")){
+            String firstExper= String.valueOf(ctx.expression().expression(0).getText());//a
+            int SecondExpr= Integer.parseInt(ctx.expression().expression(1).getText());//5
+            int firstexp1=variableValuesMap.get(firstExper);
+           if(firstexp1==SecondExpr){
+                // this.rewriter.insertBefore(ctx.getStart(), " //block number " + count++ +" Visited\n");
+                arrayList.add("block number " + count++ + " Visited\n");
+
+            }
+
+
+        }
+        return 0;}
 }
