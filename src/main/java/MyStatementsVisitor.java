@@ -92,4 +92,14 @@ public class MyStatementsVisitor extends JavaParserBaseVisitor{
         }
         count++;
         return 0;}
+    public void fileVisited() throws IOException {
+
+        FileWriter w3 = new FileWriter("fileVisited.txt");
+        for(int i=0;i<arrayList.size();i++){
+
+            w3.write(arrayList.get(i));
+
+        }
+        w3.close();
+    }
 }
