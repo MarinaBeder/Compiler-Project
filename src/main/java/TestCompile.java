@@ -41,5 +41,13 @@ public class TestCompile {
         MyStatementsVisitor myStatementsVisitor= new MyStatementsVisitor(rewriter);
         myStatementsVisitor.visit(tree);
         //myStatementsListener.visit(tree);
+         File outputListener = new File("outputListener.java");
+        outputListener.createNewFile();
+        FileWriter w1 = new FileWriter("outputListener.java");
+        w1.write(myStatementsListener1.rewriter.getText());
+        w1.close();
+        ///////////////////////////////////////////////////////////////////////////////
+        myStatementsVisitor.fileVisited();
+
         }
         }
