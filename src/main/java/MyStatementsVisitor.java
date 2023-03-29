@@ -69,4 +69,11 @@ public class MyStatementsVisitor extends JavaParserBaseVisitor{
 
         }
         return 0;}
+    public Object visitExpression(JavaParser.ExpressionContext ctx) {
+        //String SecondExpr2= String.valueOf(ctx.ASSIGN());
+        String FirstExpr= String.valueOf(ctx.expression(0).getText());
+        int SecondExpr= Integer.valueOf(ctx.expression(1).getText());
+        variableValuesMap.put(FirstExpr,SecondExpr);
+        return 0;
+    }
 }
