@@ -44,5 +44,179 @@ public class MyStatementsListener extends JavaParserBaseListener {
         // this.rewriter = rewriter;
 
     }
+    int blockNumber= 1;
+    int blocks=1;
+    @Override
+    public void enterStatement(JavaParser.StatementContext ctx) {
+        // int lastOrIndex = ctx.forControl().expression().getText().lastIndexOf("||");
+
+        if(y==1){
+
+
+            if(ctx.FOR() != null || ctx.WHILE() != null || ctx.IF() != null)
+            {blockNumber++;
+
+                int statementIndex = 0;
+
+                if(!ctx.statement(statementIndex).getStart().getText().equals("{"))
+                {String colorGreen = " {try {\n" +
+
+                        "            Writer output4 = null;\n" +
+                        "            File file2 = new File(\"C:\\\\Users\\\\marin\\\\Downloads\\\\grammars-v4-master\\\\grammars-v4-master\\\\java\\\\java\\\\wcss.css\");\n" +
+                        "            output4 = new BufferedWriter(new FileWriter(file2, true));\n" +
+
+                        " output4.write(\".parexpr\"+" + blockNumber + "+\"{background-color: LimeGreen!important;}\");" +
+
+
+                        "              output4.close();\n" +
+                        "        } catch (IOException e) {\n" +
+                        "            throw new RuntimeException(e);\n" +
+                        "        }";
+
+                    rewriter.insertBefore(ctx.statement(statementIndex).getStart(), colorGreen);
+
+                    rewriter.insertAfter(ctx.statement(statementIndex).getStop(), "\n\t}\n");
+
+                }
+
+                else{
+                    String expression = "";
+                   /* if (ctx.FOR() != null)
+                    {
+
+                        expression  = ctx.forControl().expression().getText().trim();
+                    }*/
+                     if(ctx.WHILE() != null || ctx.IF() != null)
+                    {
+                        expression = ctx.parExpression().expression().getText().trim();
+                    }
+                   // (x==0||e=0||z==i)
+                    int lastor = expression.lastIndexOf("||");//5
+                    if (lastor != -1)
+                    {
+                        String newExpr = expression.substring(0, lastor);
+
+                        String colorOrange =" try {\n" +
+
+                                "            Writer output4 = null;\n" +
+                                "            File file2 = new File(\"C:\\\\Users\\\\marin\\\\Downloads\\\\grammars-v4-master\\\\grammars-v4-master\\\\java\\\\java\\\\wcss.css\");\n" +
+                                "            output4 = new BufferedWriter(new FileWriter(file2, true));\n" +
+
+                                "  output4.write(\".parexpr\"+" + blockNumber+"+\"{background-color: orange!important;}\");"+
+
+
+                                "              output4.close();\n" +
+                                "        } catch (IOException e) {\n" +
+                                "            throw new RuntimeException(e);\n" +
+                                "        }";
+                        String colorCodeGreen = " try {\n" +
+
+                                "            Writer output4 = null;\n" +
+                                "            File file2 = new File(\"C:\\\\Users\\\\marin\\\\Downloads\\\\grammars-v4-master\\\\grammars-v4-master\\\\java\\\\java\\\\wcss.css\");\n" +
+                                "            output4 = new BufferedWriter(new FileWriter(file2, true));\n" +
+
+                                " output4.write(\".parexpr\"+" + blockNumber+"+\"{background-color: SpringGreen!important;}\");"+
+
+
+                                "              output4.close();\n" +
+                                "        } catch (IOException e) {\n" +
+                                "            throw new RuntimeException(e);\n" +
+                                "        }";
+
+                        String Condition = "\n\t\t\tif(" + newExpr + "){\n" +
+                                colorOrange + "\n\t\t\t}\n" + "\t\t\telse {\n" + colorCodeGreen + "\n\t\t\t}";
+
+                        rewriter.insertAfter(ctx.statement(0).getStart(), Condition);
+
+
+                    }else {
+
+
+                        String colorCodeGreen = " try {\n" +
+
+                                "            Writer output4 = null;\n" +
+                                "            File file2 = new File(\"C:\\\\Users\\\\marin\\\\Downloads\\\\grammars-v4-master\\\\grammars-v4-master\\\\java\\\\java\\\\wcss.css\");\n" +
+                                "            output4 = new BufferedWriter(new FileWriter(file2, true));\n" +
+
+                                " output4.write(\".parexpr\"+" + blockNumber + "+\"{background-color: LimeGreen!important;}\");" +
+
+
+                                "              output4.close();\n" +
+                                "        } catch (IOException e) {\n" +
+                                "            throw new RuntimeException(e);\n" +
+                                "        }";
+                        rewriter.insertAfter(ctx.statement(0).getStart(), colorCodeGreen);
+
+                    }
+                }
+
+
+
+            }
+            if(ctx.ELSE() != null)
+            {
+                blockNumber++;
+                int statementIndex = 1;
+                if(!ctx.statement(statementIndex).getStart().getText().equals("{"))
+                {
+                    String colorCodeGreen = " {try {\n" +
+
+                            "            Writer output4 = null;\n" +
+                            "            File file2 = new File(\"C:\\\\Users\\\\marin\\\\Downloads\\\\grammars-v4-master\\\\grammars-v4-master\\\\java\\\\java\\\\wcss.css\");\n" +
+                            "            output4 = new BufferedWriter(new FileWriter(file2, true));\n" +
+
+                            " output4.write(\".parexpr\"+" + blockNumber + "+\"{background-color: LimeGreen!important;}\");" +
+
+
+                            "              output4.close();\n" +
+                            "        } catch (IOException e) {\n" +
+                            "            throw new RuntimeException(e);\n" +
+                            "        }";
+
+                    rewriter.insertBefore(ctx.statement(statementIndex).getStart(), colorCodeGreen);
+
+                    rewriter.insertAfter(ctx.statement(statementIndex).getStop(), "\n\t}\n");
+
+                }
+            }
+        }
+
+
+//int blocks=1;
+        if(y==2){
+            if(ctx.FOR() != null  || ctx.WHILE() != null || ctx.IF() != null)
+            {    blocks++;
+                int statementIndex = 0;
+
+                if(!ctx.statement(statementIndex).getStart().getText().equals("{"))
+                {
+
+                    rewriter2.insertBefore(ctx.statement(statementIndex).getStart(), "<div style=\"background-color:red;\" class=block"+blocks+">{");
+
+                    rewriter2.insertAfter(ctx.statement(statementIndex).getStop(), "}</div>");
+                }
+            }
+
+            if(ctx.ELSE() != null)
+            {blocks++;
+                int statementIndex = 1;
+
+                if(!ctx.statement(statementIndex).getStart().getText().equals("{"))
+                {
+
+                    rewriter2.insertBefore(ctx.statement(statementIndex).getStart(), "<div style=\"background-color:red;\" class=block"+blocks+">{");
+
+                    rewriter2.insertAfter(ctx.statement(statementIndex).getStop(), "}</div>");
+                }
+            }
+
+
+        }
+
+    }
+
+
+    
+    
 
 }
