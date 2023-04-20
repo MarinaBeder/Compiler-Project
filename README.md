@@ -35,9 +35,7 @@ class output {
 
 ```
 
-> ![](C:\Users\marin\AppData\Roaming\Typora\typora-user-images\image-20230420135847669.png)
-
-
+![1](https://user-images.githubusercontent.com/66501215/233376420-12cce404-588f-42bc-a2df-1852ed55be93.PNG)
 
 ```
 block number 1
@@ -49,7 +47,7 @@ block number 5
 
 
 
-> ##  <span style='color:red'>-------------------------------------------------------------------------------------------------------</span>
+> ##  <span style='color:red'>----------------------------------------------------------------------------</span>
 
 ### <span style='color:blue'>Example 2 </span>
 
@@ -76,9 +74,7 @@ class output {
 
 ```
 
-> ![](C:\Users\marin\AppData\Roaming\Typora\typora-user-images\image-20230420141447646.png)
-
-
+![2](https://user-images.githubusercontent.com/66501215/233376585-f3159dda-d491-4685-9671-a893ad1a4123.PNG)
 
 ```
 block number 1
@@ -94,9 +90,7 @@ block number 6
 
 ```
 
-
-
-> ##  <span style='color:red'>-------------------------------------------------------------------------------------------------------</span>
+> ##  <span style='color:red'>------------------------------------------------------------------------</span>
 
 ### <span style='color:blue'>Example 3 </span>
 
@@ -121,9 +115,7 @@ block number 6
 >     }}
 > ```
 >
-> > ![](C:\Users\marin\AppData\Roaming\Typora\typora-user-images\image-20230420142207298.png)
->
-> 
+> ![3](https://user-images.githubusercontent.com/66501215/233376812-da7ec66e-c43f-4862-aad1-693c16658170.PNG)
 >
 > ```
 > block number 1
