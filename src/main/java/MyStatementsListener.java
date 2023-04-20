@@ -44,5 +44,18 @@ public class MyStatementsListener extends JavaParserBaseListener {
         // this.rewriter = rewriter;
 
     }
+ int par=1;
+    @Override
+    public void enterParExpression(JavaParser.ParExpressionContext ctx) {
+        if(y==2){
+            int x=1;
 
+            if(ctx.getText().startsWith("(")) {
+                
+                par=par+1;
+                this.rewriter2.insertBefore(ctx.getStart(), "<div style=\"background-color:pink;\" class= parexpr"+ par+">");
+                this.rewriter2.insertAfter(ctx.getStop(), "</div>");
+            }
+        }
+    }
 }
