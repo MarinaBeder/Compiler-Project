@@ -45,6 +45,33 @@ public class MyStatementsListener extends JavaParserBaseListener {
 
     }
 
+
+    @Override
+    public void enterClassDeclaration(JavaParser.ClassDeclarationContext ctx) {
+        if(y==2){
+            this.rewriter2.insertBefore(ctx.getStart(),"<!DOCTYPE html>\n" +
+                    "<html lang=\"en\">\n" +
+                    "<head>\n" +
+                    "    <meta charset=\"UTF-8\">\n" +
+                    "\"<body style=\"background-color:green;\">\n"+
+                    "<link href=\"wcss.css\" rel=\"stylesheet\" type=\"text/css\">\n"+
+                    "    <title>Title</title>\n" +
+                    "</head>\n" +
+                    "<pre>");
+            this.rewriter2.insertAfter(ctx.getStop(),"</pre>\n" +
+                    "</html>");
+        }
+        if(y==1){
+            this.rewriter.insertBefore(ctx.getStart(),
+                    "import java.io.*;\n" +
+                            "import java.io.File;\n" +
+                            "import java.io.FileInputStream;\n" +
+                            "import java.io.FileWriter;\n" +
+                            "import java.io.IOException;\n" +
+                            "import java.util.Scanner;\n");
+        }}
+    
+
  int par=1;
     @Override
     public void enterParExpression(JavaParser.ParExpressionContext ctx) {
@@ -290,6 +317,7 @@ public class MyStatementsListener extends JavaParserBaseListener {
 
     
     
+
 
 
 }
