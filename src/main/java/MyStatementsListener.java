@@ -44,6 +44,19 @@ public class MyStatementsListener extends JavaParserBaseListener {
         // this.rewriter = rewriter;
 
     }
+    
+@Override
+    public void enterClassBody(JavaParser.ClassBodyContext ctx) {
+
+
+        if(y==1){
+
+            this.rewriter.insertAfter(ctx.getStart(),
+
+                    "        static FileWriter w;\n" +
+                            "    static FileWriter wcss;\n" +
+                            "   static int c=1;"
+            );
 
 
     @Override
@@ -240,7 +253,10 @@ public class MyStatementsListener extends JavaParserBaseListener {
 
 
 
+
         }}
+
+
 
 
                                 "        }";
@@ -317,6 +333,7 @@ public class MyStatementsListener extends JavaParserBaseListener {
 
     
     
+
 
 
 
